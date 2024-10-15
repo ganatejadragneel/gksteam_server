@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const authMiddleware = require('./middleware/auth');
+const kpiRoutes = require('./routes/kpi');
 
 const app = express();
 
@@ -24,6 +25,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/kpi', kpiRoutes);
 
 // Add a protected route
 app.get('/api/protected', authMiddleware, (req, res) => {
